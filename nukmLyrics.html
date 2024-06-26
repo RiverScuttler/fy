@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nung una kitang makita</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: whitesmoke;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-size: 32px;
+        }
+        #main{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0;
+        }
+
+        .cont{
+            height: 450px;
+            width: 600px;
+            margin: 100px auto;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .imageBox{
+            height: 250px;
+            width: 300px;
+            /* background-image: url("nukmImages/blushingkitten.jfif"); */
+            background-repeat: no-repeat;
+            background-size: cover;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        .lyricsBox1, .lyricsBox2{
+            height: 50px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .lyricsBox2{
+            margin-top: -15px;
+        }
+
+        /* audio */
+        audio::-webkit-media-controls-panel{
+            background-color: #aaa;
+        }
+        .audioCont{
+            margin-top: -80px;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="main">
+        <div class="cont">
+            <div class="imageBox" id="image"></div>
+            <div class="lyricsBox1"></div>
+            <div class="lyricsBox2"></div>
+        </div>
+
+        <div class="audioCont">
+            <audio controls autoplay id="audio">
+                <source src="audio/baliwsayo.mp3" type="audio/mpeg">
+             </audio>
+        </div>
+    </div>
+
+    <script>
+
+        
+        // trigger code
+        var audio = document.getElementById("audio");
+
+        audio.addEventListener("play", function(){
+            console.log("Play button clicked");
+
+            printLyrics1(lyrics1);
+            printLyrics2(lyrics2);
+
+            // IMAGES
+            // image 1
+            setTimeout(fadeIn1, 6000);
+            setTimeout(fadeOut1, 10000);
+            // image 2
+            setTimeout(fadeIn2, 11000);
+            setTimeout(fadeOut2, 15200);
+            // image 3
+            setTimeout(fadeIn3, 16000);
+            setTimeout(fadeOut3, 19000);
+            // image 4
+            setTimeout(fadeIn4, 21800);
+            setTimeout(fadeOut4, 24200);
+            // image 5
+            setTimeout(fadeIn5, 25000);
+            setTimeout(fadeOut5, 27800);
+
+            
+        });
+
+// image code here!!
+        var image = document.getElementById("image");
+
+        // First image
+        function fadeIn1() {
+            image.style.backgroundImage = "url('nukmImages/blushingkitten.jfif')";
+            image.style.opacity = '1'; 
+        }
+        function fadeOut1() {
+            image.style.opacity = '0';
+        }
+        // Second image
+        function fadeIn2() {
+            image.style.backgroundImage = "url('nukmImages/hhmmffkitten.jfif')";
+            image.style.opacity = '1';
+        }
+        function fadeOut2() {
+            image.style.opacity = '0';
+        }
+        // third image
+        function fadeIn3() {
+            image.style.backgroundImage = "url('nukmImages/flowerkitten.jfif')";
+            image.style.opacity = '1';
+        }
+        function fadeOut3() {
+            image.style.opacity = '0';
+        }
+        // fourth image
+        function fadeIn4() {
+            image.style.backgroundImage = "url('nukmImages/uwudog.jfif')";
+            image.style.opacity = '1';
+        }
+        function fadeOut4() {
+            image.style.opacity = '0';
+        }
+        function fadeIn5() {
+            image.style.backgroundImage = "url('nukmImages/cutesmilekitten.jfif')";
+            image.style.opacity = '1';
+        }
+        function fadeOut5() {
+            image.style.opacity = '0';
+        }
+
+// Lyrics code here!!
+        const lyrics1 = [
+            "Nung una kitang",
+            "binihag mo agad ang",
+            "at dahan-dahan",
+            "hindi ko namalayan",
+            "na ikaw pala",
+            "ang matagal ko",
+        ];
+        const lyrics2 = [
+            "makita",
+            "aking mga mata",
+            "nang nahulog",
+            " ",
+            "ikaw na nga",
+            "nang hinintay",
+        ];
+
+
+        const line1 = document.querySelector(".lyricsBox1");
+        const line2 = document.querySelector(".lyricsBox2");
+
+        // Lyrics 1
+       function printLyrics1(lyrics1) {
+            for (let i = 0; i < lyrics1.length; i++) {
+                let delay = 0;
+                let clearDelay = 0;
+
+                if(i === 0) {
+                    delay = 6000; // first line after 6s
+                    clearDelay = 4000;
+                }
+                else if(i === 1) {
+                    delay = 11000;
+                    clearDelay = 5000;
+                }
+                else if(i === 2) {
+                    delay = 16500;
+                    clearDelay = 3000;
+                }
+                else if(i === 3) {
+                    delay = 20000;
+                    clearDelay = 1500;
+                }
+                else if(i === 4) {
+                    delay = 22000;
+                    clearDelay = 2500;
+                }
+                else if(i === 5) {
+                    delay = 24800;
+                    clearDelay = 3500;
+                }
+                else{
+                    line1.textContent = "";
+                }
+
+                setTimeout(() => {
+                    line1.textContent = lyrics1[i];
+
+                    setTimeout(() => {
+                        line1.textContent = "";
+                    }, clearDelay);
+                }, delay);
+                
+            }
+       }
+
+        // Lyrics 2
+        function printLyrics2(lyrics2) {
+            for (let i = 0; i < lyrics2.length; i++) {
+                let delay = 0;
+                let disappearDelay = 0;
+
+                if(i === 0) {
+                    delay = 8000; // first line after 6s
+                    disappearDelay = 2000;
+                }
+                else if(i === 1) {
+                    delay = 13000;
+                    disappearDelay = 3000;
+                }
+                else if(i === 2) {
+                    delay = 18000;
+                    disappearDelay = 1500;
+                }
+                else if(i === 3) {
+                    delay = 20000;
+                    disappearDelay = 1500;
+                }
+                else if(i === 4) {
+                    delay = 24000;
+                    disappearDelay = 500;
+                }
+                else if(i === 5) {
+                    delay = 24800;
+                    disappearDelay = 3500;
+                }
+                else{
+                    line2.textContent = "";
+                }
+
+                setTimeout(() => {
+                    line2.textContent = lyrics2[i];
+
+                    setTimeout(() => {
+                        line2.textContent = "";
+                    }, disappearDelay);
+                }, delay);
+            }
+       }
+       
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
